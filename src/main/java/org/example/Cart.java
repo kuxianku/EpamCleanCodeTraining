@@ -11,51 +11,55 @@ public class Cart {
     private float totalDiscount;
     private final Map<String, Float> productDiscount;
 
+    /**
+     * default constructor
+     **/
     public Cart() {
         items = new ArrayList<>();
         productDiscount = new HashMap<>();
         productDiscount.put(APPLE_ID, 0.1f);
     }
 
-    public void addProductToCart(Product product) throws ProductExceedsLimitException {
-        Item item = findItemByProducts(product);
-        if (item == null) {
-            items.add(asAnewItem(product));
-        } else {
-            checkProductQuantity(item);
-            increase(item);
-        }
-    }
-
-
-    private Item findItemByProducts(Product product) {
-        return items
+    /**
+     * add a new product to card
+     * if the quantity of the product over the MAX_QUANTITY_PER_PRODUCT return the false
+     * if success to add return true
+     **/
+    public Boolean add(String name, String id, String price, String type, String productionDate) {
+        Product product = new Product(name, id, price, type, productionDate);
+        Item item = items
                 .stream()
-                .filter(item -> item.getProduct() == product)
+                .filter(it -> it.getProduct() == product)
                 .findFirst()
                 .orElse(null);
-    }
-
-    private Item asAnewItem(Product product) {
-        return new Item(product, 1, checkForDiscount(product));
-    }
-
-    private float checkForDiscount(Product product) {
-        if (productDiscount.containsKey(product.getId())) {
-            return productDiscount.get(product.getId());
+        // there is no product in cart
+        if (item == null) {
+            asAnewItem(product, true);
+            //items.add(asAnewItem(product,true));
         } else {
-            return 1;
+            if (item.getQuantity() >= MAX_QUANTITY_PER_PRODUCT) {
+                return false;
+            }
+            item.setQuantity(item.getQuantity() + 1);
         }
+        return true;
     }
 
-    private void increase(Item item) {
-        item.setQuantity(item.getQuantity() + 1);
+    public void decreaseProduct() {
+        //TODO will complete this method on next week
     }
 
-    private void checkProductQuantity(Item item) throws ProductExceedsLimitException {
-        if (item.getQuantity() >= MAX_QUANTITY_PER_PRODUCT) {
-            throw new ProductExceedsLimitException(item.getProduct().getName() + "exceeds the maximum number limit of 99");
+    private Item asAnewItem(Product product, boolean flag) {
+        float discount;
+        if (productDiscount.containsKey(product.getId())) {
+            discount = productDiscount.get(product.getId());
+        } else {
+            discount = 1;
         }
+        Item item = new Item(product, 1, discount);
+        if (flag) {
+            items.add(item);
+        }
+        return item;
     }
-
 }
