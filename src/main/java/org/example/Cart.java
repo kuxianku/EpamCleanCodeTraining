@@ -3,10 +3,6 @@ package org.example;
 import java.util.*;
 
 public class Cart {
-    private static final int MAX_QUANTITY_PER_PRODUCT = 99;
-    private static final int PRICE_OF_10_DISCOUNT = 200;
-    private static final String APPLE_ID = "1";
-
     private final List<Item> items;
     private float totalDiscount;
     private final Map<String, Float> productDiscount;
@@ -17,12 +13,12 @@ public class Cart {
     public Cart() {
         items = new ArrayList<>();
         productDiscount = new HashMap<>();
-        productDiscount.put(APPLE_ID, 0.1f);
+        productDiscount.put("1", 0.1f);
     }
 
     /**
      * add a new product to card
-     * if the quantity of the product over the MAX_QUANTITY_PER_PRODUCT return the false
+     * if the quantity of the product over the 99 return the false
      * if success to add return true
      **/
     public Boolean add(String name, String id, String price, String type, String productionDate) {
@@ -37,7 +33,7 @@ public class Cart {
             asAnewItem(product, true);
             //items.add(asAnewItem(product,true));
         } else {
-            if (item.getQuantity() >= MAX_QUANTITY_PER_PRODUCT) {
+            if (item.getQuantity() >= 99) {
                 return false;
             }
             item.setQuantity(item.getQuantity() + 1);
