@@ -16,6 +16,20 @@ public class Cart {
         productDiscount.put("1", 0.1f);
     }
 
+    private Item asAnewItem(Product product, boolean flag) {
+        float discount;
+        if (productDiscount.containsKey(product.getId())) {
+            discount = productDiscount.get(product.getId());
+        } else {
+            discount = 1;
+        }
+        Item item = new Item(product, 1, discount);
+        if (flag) {
+            items.add(item);
+        }
+        return item;
+    }
+
     /**
      * add a new product to card
      * if the quantity of the product over the 99 return the false
@@ -42,19 +56,5 @@ public class Cart {
 
     public void decreaseProduct() {
         //TODO will complete this method on next week
-    }
-
-    private Item asAnewItem(Product product, boolean flag) {
-        float discount;
-        if (productDiscount.containsKey(product.getId())) {
-            discount = productDiscount.get(product.getId());
-        } else {
-            discount = 1;
-        }
-        Item item = new Item(product, 1, discount);
-        if (flag) {
-            items.add(item);
-        }
-        return item;
     }
 }
