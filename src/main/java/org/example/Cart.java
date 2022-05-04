@@ -24,7 +24,7 @@ public class Cart {
     public Boolean add(Product product) {
         Item item = items
                 .stream()
-                .filter(it -> it.getProduct() == product)
+                .filter(it -> it.getProduct().equals(product))
                 .findFirst()
                 .orElse(null);
         // there is no product in cart
