@@ -31,11 +31,8 @@ public class Cart {
      * add a new product to card
      **/
     public Boolean add(Product product) {
-        ItemInfo itemInfo = itemInfoList
-                .stream()
-                .filter(it -> it.getProduct().equals(product))
-                .findFirst()
-                .orElse(null);
+        ItemInfo itemInfo = itemInfoList.stream().filter(it -> it.getProduct().equals(product))
+                .findFirst().orElse(null);
         // there is no product in cart
         if (itemInfo == null) {
             asAnewItem(product, true);
@@ -49,11 +46,8 @@ public class Cart {
         return true;
     }
     public Boolean add(Product product, int count) {
-        ItemInfo itemInfo = itemInfoList
-                .stream()
-                .filter(it -> it.getProduct().equals(product))
-                .findFirst()
-                .orElse(null);
+        ItemInfo itemInfo = itemInfoList.stream().filter(it -> it.getProduct().equals(product))
+                .findFirst().orElse(null);
         // there is no product in cart
         if (itemInfo == null) {
             asAnewItem(product, true);

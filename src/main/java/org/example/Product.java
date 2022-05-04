@@ -1,5 +1,6 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Product {
@@ -8,6 +9,7 @@ public class Product {
     private String price;
     private String type;
     private String productionDate;
+    private LocalDate expYyMmDyDate;
     public Product(String name, String id, String price, String type, String productionDate) {
         this.name = name;
         this.id = id;
@@ -44,6 +46,12 @@ public class Product {
     }
     public void setProductionDate(String productionDate) {
         this.productionDate = productionDate;
+    }
+    public LocalDate getExpYyMmDyDate() {
+        return expYyMmDyDate;
+    }
+    public void setExpYyMmDyDate(LocalDate expYyMmDyDate) {
+        this.expYyMmDyDate = expYyMmDyDate;
     }
     @Override
     public boolean equals(Object o) {
