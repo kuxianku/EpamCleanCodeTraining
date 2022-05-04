@@ -21,8 +21,7 @@ public class Cart {
      * if the quantity of the product over the 99 return the false
      * if success to add return true
      **/
-    public Boolean add(String name, String id, String price, String type, String productionDate) {
-        Product product = new Product(name, id, price, type, productionDate);
+    public Boolean add(Product product) {
         Item item = items
                 .stream()
                 .filter(it -> it.getProduct() == product)
