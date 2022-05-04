@@ -46,10 +46,29 @@ public class Cart {
             asAnewItem(product, true);
             //items.add(asAnewItem(product,true));
         } else {
-            if (item.getQuantity() >= 99) {
+            if (item.getQuantity() + 1 >= 99) {
                 return false;
             }
             item.setQuantity(item.getQuantity() + 1);
+        }
+        return true;
+    }
+
+    public Boolean add(Product product, int count) {
+        Item item = items
+                .stream()
+                .filter(it -> it.getProduct().equals(product))
+                .findFirst()
+                .orElse(null);
+        // there is no product in cart
+        if (item == null) {
+            asAnewItem(product, true);
+            //items.add(asAnewItem(product,true));
+        } else {
+            if (item.getQuantity() + count >= 99) {
+                return false;
+            }
+            item.setQuantity(item.getQuantity() + count);
         }
         return true;
     }
