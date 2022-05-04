@@ -3,7 +3,7 @@ package org.example;
 import java.util.*;
 
 public class Cart {
-    private final List<Item> items;
+    private final List<ItemInfo> itemInfoList;
     private float totalDiscount;
     private final Map<String, Float> productDiscount;
 
@@ -11,23 +11,23 @@ public class Cart {
      * default constructor
      **/
     public Cart() {
-        items = new ArrayList<>();
+        itemInfoList = new ArrayList<>();
         productDiscount = new HashMap<>();
         productDiscount.put("1", 0.1f);
     }
 
-    private Item asAnewItem(Product product, boolean flag) {
+    private ItemInfo asAnewItem(Product product, boolean flag) {
         float discount;
         if (productDiscount.containsKey(product.getId())) {
             discount = productDiscount.get(product.getId());
         } else {
             discount = 1;
         }
-        Item item = new Item(product, 1, discount);
+        ItemInfo itemInfo = new ItemInfo(product, 1, discount);
         if (flag) {
-            items.add(item);
+            itemInfoList.add(itemInfo);
         }
-        return item;
+        return itemInfo;
     }
 
     /**
@@ -36,39 +36,39 @@ public class Cart {
      * if success to add return true
      **/
     public Boolean add(Product product) {
-        Item item = items
+        ItemInfo itemInfo = itemInfoList
                 .stream()
                 .filter(it -> it.getProduct().equals(product))
                 .findFirst()
                 .orElse(null);
         // there is no product in cart
-        if (item == null) {
+        if (itemInfo == null) {
             asAnewItem(product, true);
             //items.add(asAnewItem(product,true));
         } else {
-            if (item.getQuantity() + 1 >= 99) {
+            if (itemInfo.getQuantity() + 1 >= 99) {
                 return false;
             }
-            item.setQuantity(item.getQuantity() + 1);
+            itemInfo.setQuantity(itemInfo.getQuantity() + 1);
         }
         return true;
     }
 
     public Boolean add(Product product, int count) {
-        Item item = items
+        ItemInfo itemInfo = itemInfoList
                 .stream()
                 .filter(it -> it.getProduct().equals(product))
                 .findFirst()
                 .orElse(null);
         // there is no product in cart
-        if (item == null) {
+        if (itemInfo == null) {
             asAnewItem(product, true);
             //items.add(asAnewItem(product,true));
         } else {
-            if (item.getQuantity() + count >= 99) {
+            if (itemInfo.getQuantity() + count >= 99) {
                 return false;
             }
-            item.setQuantity(item.getQuantity() + count);
+            itemInfo.setQuantity(itemInfo.getQuantity() + count);
         }
         return true;
     }
