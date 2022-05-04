@@ -6,7 +6,6 @@ public class Cart {
     private final List<ItemInfo> itemInfoList;
     private float totalDiscount;
     private final Map<String, Float> productDiscount;
-
     /**
      * default constructor
      **/
@@ -15,7 +14,6 @@ public class Cart {
         productDiscount = new HashMap<>();
         productDiscount.put("1", 0.1f);
     }
-
     private ItemInfo asAnewItem(Product product, boolean flag) {
         float discount;
         if (productDiscount.containsKey(product.getId())) {
@@ -29,7 +27,6 @@ public class Cart {
         }
         return itemInfo;
     }
-
     /**
      * add a new product to card
      * if the quantity of the product over the 99 return the false
@@ -53,7 +50,6 @@ public class Cart {
         }
         return true;
     }
-
     public Boolean add(Product product, int count) {
         ItemInfo itemInfo = itemInfoList
                 .stream()
@@ -72,7 +68,6 @@ public class Cart {
         }
         return true;
     }
-
     public void decreaseProduct() {
         //TODO will complete this method on next week
     }
