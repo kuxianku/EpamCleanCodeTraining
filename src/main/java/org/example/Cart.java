@@ -50,6 +50,9 @@ public class Cart {
         return true;
     }
     public Boolean add(Product product, int count) {
+        if (count >= 99) {
+            return false;
+        }
         if (product.getExpYyMmDyDate().isAfter(LocalDate.now())) {
             return false;
         }
@@ -57,8 +60,7 @@ public class Cart {
                 .findFirst().orElse(null);
         // there is no product in cart
         if (itemInfo == null) {
-            asAnewItem(product, true);
-            //items.add(asAnewItem(product,true));
+            return false;
         } else {
             if (itemInfo.getQuantity() + count >= 99) {
                 return false;
