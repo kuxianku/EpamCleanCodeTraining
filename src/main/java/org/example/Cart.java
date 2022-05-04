@@ -1,5 +1,6 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Cart {
@@ -31,6 +32,9 @@ public class Cart {
      * add a new product to card
      **/
     public Boolean add(Product product) {
+        if (product.getExpYyMmDyDate().isAfter(LocalDate.now())) {
+            return false;
+        }
         ItemInfo itemInfo = itemInfoList.stream().filter(it -> it.getProduct().equals(product))
                 .findFirst().orElse(null);
         // there is no product in cart
@@ -46,6 +50,9 @@ public class Cart {
         return true;
     }
     public Boolean add(Product product, int count) {
+        if (product.getExpYyMmDyDate().isAfter(LocalDate.now())) {
+            return false;
+        }
         ItemInfo itemInfo = itemInfoList.stream().filter(it -> it.getProduct().equals(product))
                 .findFirst().orElse(null);
         // there is no product in cart
