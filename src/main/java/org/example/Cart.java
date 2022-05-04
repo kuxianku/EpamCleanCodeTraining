@@ -29,8 +29,6 @@ public class Cart {
     }
     /**
      * add a new product to card
-     * if the quantity of the product over the 99 return the false
-     * if success to add return true
      **/
     public Boolean add(Product product) {
         ItemInfo itemInfo = itemInfoList
