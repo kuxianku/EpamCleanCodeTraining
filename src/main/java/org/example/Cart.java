@@ -31,7 +31,8 @@ public class Cart {
     /**
      * add a new product to card
      **/
-    public Boolean add(Product product) {
+    public Boolean add(String name, String id, String price, String type, String productionDate) {
+        Product product = new Product(name, id, price, type, productionDate);
         if (product.getExpYyMmDyDate().isAfter(LocalDate.now())) {
             return false;
         }
