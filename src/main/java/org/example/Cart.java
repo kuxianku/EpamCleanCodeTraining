@@ -54,9 +54,6 @@ public class Cart {
         if (count >= 99) {
             return false;
         }
-        if (product.getExpYyMmDyDate().isAfter(LocalDate.now())) {
-            return false;
-        }
         ItemInfo itemInfo = itemInfoList.stream().filter(it -> it.getProduct().equals(product))
                 .findFirst().orElse(null);
         // there is no product in cart
