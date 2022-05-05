@@ -50,18 +50,11 @@ public class Cart {
         }
         return true;
     }
-    public Boolean add(Product product, int count) {
+    public Boolean add(ItemInfo item, int count) {
         if (count >= 99) {
             return false;
         }
-        ItemInfo itemInfo = itemInfoList.stream().filter(it -> it.getProduct().equals(product))
-                .findFirst().orElse(null);
-        // there is no product in cart
-        if (itemInfo == null) {
-            return false;
-        } else {
-            itemInfo.setQuantity(count);
-        }
+        item.setQuantity(count);
         return true;
     }
     public void decreaseProduct() {
