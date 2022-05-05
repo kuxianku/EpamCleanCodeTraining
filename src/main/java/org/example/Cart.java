@@ -62,10 +62,7 @@ public class Cart {
         if (itemInfo == null) {
             return false;
         } else {
-            if (itemInfo.getQuantity() + count >= 99) {
-                return false;
-            }
-            itemInfo.setQuantity(itemInfo.getQuantity() + count);
+            itemInfo.setQuantity(count);
         }
         return true;
     }
