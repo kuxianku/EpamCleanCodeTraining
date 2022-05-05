@@ -42,7 +42,7 @@ public class Cart {
             asAnewItem(product, true);
             //items.add(asAnewItem(product,true));
         } else {
-            if (itemInfo.getQuantity() + 1 >= 99) {
+            if (itemInfo.getQuantity() >= 99) {
                 return false;
             }
             itemInfo.setQuantity(itemInfo.getQuantity() + 1);
