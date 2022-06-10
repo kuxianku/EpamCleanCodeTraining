@@ -2,18 +2,18 @@ package com.epam.cleancode.training.lsp;
 
 class Test {
 
-    static void getAreaTest(Rectangle r) {
-        int width = r.getWidth();
-        r.setHeight(10);
-        System.out.println("Expected area of " + (width * 10) + ", got " + r.getArea());
+    public static void main(String[] args) {
+        Rectangle rectangle = new Rectangle(1, 3);
+        someTestMethod(rectangle);
+
+        Rectangle square = new Square();
+        square.setWidth(5);
+        someTestMethod(square);
     }
 
-    public static void main(String[] args) {
-        Rectangle rc = new Rectangle(2, 3);
-        getAreaTest(rc);
-
-        Rectangle sq = new Square();
-        sq.setWidth(5);
-        getAreaTest(sq);
+    static void someTestMethod(Rectangle rectangle) {
+        rectangle.setHeight(2);
+        rectangle.setWidth(3);
+        assert(rectangle.getArea() == 6);
     }
 }

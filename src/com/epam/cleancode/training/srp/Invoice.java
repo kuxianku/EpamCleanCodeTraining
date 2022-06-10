@@ -6,14 +6,14 @@ public class Invoice {
     private int quantity;
     private double discountRate;
     private double taxRate;
-    private double total;
+    private double totalAmount;
 
     public Invoice(Book book, int quantity, double discountRate, double taxRate) {
         this.book = book;
         this.quantity = quantity;
         this.discountRate = discountRate;
         this.taxRate = taxRate;
-        this.total = this.calculateTotal();
+        this.totalAmount = this.calculateTotal();
     }
 
     public double calculateTotal() {
@@ -28,7 +28,7 @@ public class Invoice {
         System.out.println(quantity + "x " + book.name + " " + book.price + "$");
         System.out.println("Discount Rate: " + discountRate);
         System.out.println("Tax Rate: " + taxRate);
-        System.out.println("Total: " + total);
+        System.out.println("Total: " + totalAmount);
     }
 
     public void saveToFile(String filename) {
