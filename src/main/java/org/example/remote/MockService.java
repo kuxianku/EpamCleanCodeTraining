@@ -30,7 +30,7 @@ public class MockService implements RemoteService {
         List<Employee> employees = generateMockEmployees();
         Optional<Employee> employ = employees
                 .stream()
-                .filter(employee -> employee.getId() == id)
+                .filter(employee -> employee.id() == id)
                 .findFirst();
         if (employ.isEmpty()) {
             throw new EmployeeNotFoundException(id);
@@ -45,7 +45,7 @@ public class MockService implements RemoteService {
                 .collect(Collectors.toList());
     }
 
-    private final Employee generateMockEmployee(int id) {
+    private Employee generateMockEmployee(int id) {
         Random random = new Random();
         EmployeeWorkRecords employeeWorkRecords = new EmployeeWorkRecords(random.nextInt(8), random.nextInt(3));
         return new Employee("Mock" + id, id, employeeWorkRecords);

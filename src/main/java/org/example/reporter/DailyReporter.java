@@ -2,8 +2,6 @@ package org.example.reporter;
 
 import org.example.dto.Employee;
 
-import java.security.PublicKey;
-
 public class DailyReporter extends Reporter {
 
 
@@ -15,12 +13,17 @@ public class DailyReporter extends Reporter {
 
     @Override
     public int employeeWorkHours() {
-        return employee.getEmployeeWorkRecords().getWorkingHours();
+        return employee.employeeWorkRecords().workingHours();
     }
 
     @Override
     public int employeeNumOfMeals() {
-        return employee.getEmployeeWorkRecords().getNumberOfMeals();
+        return employee.employeeWorkRecords().numberOfMeals();
+    }
+
+    @Override
+    public String employeeName() {
+        return null;
     }
 
 
