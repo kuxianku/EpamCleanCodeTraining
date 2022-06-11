@@ -3,7 +3,6 @@ package org.example.remote;
 import org.example.dto.Employee;
 import org.example.dto.EmployeeWorkRecords;
 import org.example.exception.EmployeeNotActiveException;
-import org.example.exception.EmployeeNotFoundException;
 import org.example.exception.EmployeeOnVacationException;
 
 import java.util.List;
@@ -17,8 +16,7 @@ public class MockService implements RemoteService {
     public static int ID_LEFT = 11;
 
     @Override
-    public Employee getEmployeeById(int id)
-            throws EmployeeNotActiveException, EmployeeNotFoundException, EmployeeOnVacationException {
+    public Employee getEmployeeById(int id) throws EmployeeOnVacationException, EmployeeNotActiveException {
         //mock exception
         if (id == ID_VACATION) {
             throw new EmployeeOnVacationException(id);
@@ -30,10 +28,10 @@ public class MockService implements RemoteService {
         List<Employee> employees = generateMockEmployees();
         Optional<Employee> employ = employees
                 .stream()
-                .filter(employee -> employee.getId() == id)
+                .filter(employee -> employee.id() == id)
                 .findFirst();
         if (employ.isEmpty()) {
-            throw new EmployeeNotFoundException(id);
+            return null;
         } else {
             return employ.get();
         }
@@ -45,7 +43,7 @@ public class MockService implements RemoteService {
                 .collect(Collectors.toList());
     }
 
-    private final Employee generateMockEmployee(int id) {
+    private Employee generateMockEmployee(int id) {
         Random random = new Random();
         EmployeeWorkRecords employeeWorkRecords = new EmployeeWorkRecords(random.nextInt(8), random.nextInt(3));
         return new Employee("Mock" + id, id, employeeWorkRecords);
