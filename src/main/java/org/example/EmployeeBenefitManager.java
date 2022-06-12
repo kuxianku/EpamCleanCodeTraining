@@ -7,6 +7,6 @@ public class EmployeeBenefitManager {
     public static void main(String[] args) {
         ReporterFactory reporterFactory = new ReporterFactory();
         Reporter reporter = reporterFactory.getReporterByEmployeeId(1);
-        System.out.print("total pay of " + reporter.employeeName() + " :" + reporter.salaries());
+        reporter.printSalaries();
     }
 }

@@ -15,4 +15,8 @@ public abstract class Reporter {
     public int salaries() {
         return (employeeNumOfMeals() * MEALS_PER_DIEM) + (employeeWorkHours() * HOURLY_RATE);
     }
+
+    public void printSalaries() {
+        System.out.print("total pay of " + employeeName() + " :" + salaries());
+    }
 }
