@@ -1,4 +1,4 @@
-package com.epam.cleancode.training.lsp;
+package com.epam.cleancode.training.code3;
 
 class Test {
 
@@ -14,7 +14,6 @@ class Test {
     static void reforgeShape(Rectangle rectangle) {
         rectangle.setHeight(2);
         rectangle.setWidth(3);
-
         System.out.println("Area is " + rectangle.getArea());
     }
 }

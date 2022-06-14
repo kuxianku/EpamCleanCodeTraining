@@ -1,4 +1,4 @@
-package com.epam.cleancode.training.lsp;
+package com.epam.cleancode.training.code3;
 
 class Rectangle {
     protected int width, height;

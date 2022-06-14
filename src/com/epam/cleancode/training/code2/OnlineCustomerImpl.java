@@ -1,4 +1,4 @@
-package com.epam.cleancode.training.isp;
+package com.epam.cleancode.training.code2;
 
 public class OnlineCustomerImpl implements RestaurantInterface {
 

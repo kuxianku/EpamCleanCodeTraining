@@ -1,4 +1,4 @@
-package com.epam.cleancode.training.ocp;
+package com.epam.cleancode.training.code4;
 
 public class Circle {
 

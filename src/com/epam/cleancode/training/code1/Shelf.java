@@ -1,4 +1,4 @@
-package com.epam.cleancode.training.dip;
+package com.epam.cleancode.training.code1;
 
 public class Shelf {
 
