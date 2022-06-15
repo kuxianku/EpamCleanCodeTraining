@@ -13,10 +13,10 @@ public class Invoice {
         this.quantity = quantity;
         this.discountRate = discountRate;
         this.taxRate = taxRate;
-        this.totalAmount = this.calculateTotal();
+        this.totalAmount = this.calculateTotalAmount();
     }
 
-    public double calculateTotal() {
+    public double calculateTotalAmount() {
         double price = ((book.price - book.price * discountRate) * this.quantity);
 
         double priceWithTaxes = price * (1 + taxRate);
