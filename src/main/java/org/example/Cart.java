@@ -54,7 +54,12 @@ public class Cart {
         if (count >= 99) {
             return false;
         }
-        item.setQuantity(count);
+        ItemInfo itemInfo = itemInfoList.stream().filter(it -> it.getProduct().equals(item.getProduct()))
+                .findFirst().orElse(null);
+        if (itemInfo == null) {
+            return false;
+        }
+        itemInfo.setQuantity(count);
         return true;
     }
     public void decreaseProduct() {
