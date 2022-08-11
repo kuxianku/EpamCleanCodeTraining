@@ -33,7 +33,7 @@ public class Cart {
      **/
     public Boolean add(String name, String id, String price, String type, String productionDate) {
         Product product = new Product(name, id, price, type, productionDate);
-        if (product.getExpYyMmDyDate().isAfter(LocalDate.now())) {
+        if (product.getExpYyMmDyDate().isBefore(LocalDate.now())) {
             return false;
         }
         ItemInfo itemInfo = itemInfoList.stream().filter(it -> it.getProduct().equals(product))
