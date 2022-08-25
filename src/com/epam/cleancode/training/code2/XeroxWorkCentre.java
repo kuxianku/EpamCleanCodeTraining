@@ -1,6 +1,6 @@
 package com.epam.cleancode.training.code2;
 
-class XeroxWorkCentre implements IMultiFunction {
+class XeroxWorkCentre implements IMachine {
     @Override
     public void print() {
         // implement print

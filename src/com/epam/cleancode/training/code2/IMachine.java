@@ -1,6 +1,6 @@
 package com.epam.cleancode.training.code2;
 
-interface IMultiFunction {
+interface IMachine {
     public void print();
 
     public void scan();

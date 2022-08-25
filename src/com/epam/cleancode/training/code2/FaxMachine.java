@@ -1,6 +1,6 @@
 package com.epam.cleancode.training.code2;
 
-class FaxMachine implements IMultiFunction {
+class FaxMachine implements IMachine {
 
     @Override
     public void print() {
