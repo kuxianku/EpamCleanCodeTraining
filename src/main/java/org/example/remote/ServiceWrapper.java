@@ -3,7 +3,6 @@ package org.example.remote;
 import org.example.dto.Employee;
 import org.example.exception.EmployeeInvalidException;
 import org.example.exception.EmployeeNotActiveException;
-import org.example.exception.EmployeeNotFoundException;
 import org.example.exception.EmployeeOnVacationException;
 
 public class ServiceWrapper {
@@ -16,7 +15,7 @@ public class ServiceWrapper {
     public Employee getEmployeeById(int id) {
         try {
             return remoteService.getEmployeeById(id);
-        } catch (EmployeeNotActiveException | EmployeeOnVacationException | EmployeeNotFoundException e) {
+        } catch (EmployeeNotActiveException | EmployeeOnVacationException e) {
             throw new EmployeeInvalidException(e);
         }
     }
