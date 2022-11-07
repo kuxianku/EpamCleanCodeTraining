@@ -1,16 +1,12 @@
 package org.example;
 
-import org.example.reporter.DailyReporter;
+import org.example.reporter.Reporter;
+import org.example.reporter.ReporterFactory;
 
 public class EmployeeBenefitManager {
-
     public static void main(String[] args) {
-        DailyReporter dailyReporter = new DailyReporter(5);
-
-        String name = dailyReporter.getEmployee().name();
-
-        System.out.print("salaries of " + name + " is " + dailyReporter.salaries());
-
-
+        ReporterFactory reporterFactory = new ReporterFactory();
+        Reporter reporter = reporterFactory.getReporterByEmployeeId(1);
+        reporter.printSalaries();
     }
 }
