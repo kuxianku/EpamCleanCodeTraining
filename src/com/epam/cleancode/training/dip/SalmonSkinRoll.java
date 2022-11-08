@@ -1,4 +1,4 @@
-package com.epam.cleancode.training.code1;
+package com.epam.cleancode.training.dip;
 
 public class SalmonSkinRoll {
 

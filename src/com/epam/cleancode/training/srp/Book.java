@@ -1,4 +1,4 @@
-package com.epam.cleancode.training.code5;
+package com.epam.cleancode.training.srp;
 
 class Book {
     String name;

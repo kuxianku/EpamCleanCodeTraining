@@ -1,4 +1,4 @@
-package com.epam.cleancode.training.code2;
+package com.epam.cleancode.training.isp;
 
 class FaxMachine implements IMachine {
 

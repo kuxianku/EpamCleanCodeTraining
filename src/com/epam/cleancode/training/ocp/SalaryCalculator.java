@@ -1,4 +1,4 @@
-package com.epam.cleancode.training.code4;
+package com.epam.cleancode.training.ocp;
 
 class SalaryCalculator {
     public int calculateSalary(Employee employee) {
